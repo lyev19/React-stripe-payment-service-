@@ -6,7 +6,7 @@ export const Cart = (props)=>{
 //onClick={()=>{props.set_pop()}}
      const cart_items= props.Cart===[]?[]:props.Cart; 
      const rend = cart_items.map(a=>{ return(<div className="cart-item">{a===[]?[]:a.title} 
-     {a===[]?[]:a.price}  <button> remove </button> </div>)})
+     {a===[]?[]:a.price}  <button id={a.id}className="cart-button" onClick={(event)=>{props.remove_cart(event.target.id)}}> remove </button> </div>)})
     return(  
     <div>
         <Portal>
@@ -16,7 +16,7 @@ export const Cart = (props)=>{
                 <div className="portal-intern">
                     {rend}
                 </div>
-                
+                <button className="button-buy end"></button>
             </div>)}
         </Portal>
     </div>

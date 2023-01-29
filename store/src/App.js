@@ -24,6 +24,13 @@ function App() {
     SetCart(Cart =>[ ...Cart,item])
     console.log(Cart)
  } 
+ 
+  const remove_cart = (item)=>{
+   
+    console.log(Cart.filter((a)=>JSON.stringify(a.id)!==item))
+    SetCart(Cart.filter((a)=>JSON.stringify(a.id)!==item))
+    
+  }  
 
   const all_items_fetch= async()=>{
     if(localStorage.getItem("items")===null){
@@ -45,7 +52,7 @@ function App() {
   return (
      <Router>
         <Routes>
-            <Route path="/"  element={<Store Items={Items} set_items={set_items} pop={pop} set_pop={set_pop} all_items_fetch={ all_items_fetch} set_cart={set_cart} Cart={Cart}/> } />
+            <Route path="/"  element={<Store remove_cart={remove_cart} Items={Items} set_items={set_items} pop={pop} set_pop={set_pop} all_items_fetch={ all_items_fetch} set_cart={set_cart} Cart={Cart}/> } />
         </Routes>
      </Router>
   );

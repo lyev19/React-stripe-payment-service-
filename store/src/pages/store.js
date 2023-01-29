@@ -19,7 +19,7 @@ export const Store =(props) =>{
            
         </header>
         <Elements Items={props.Items} set_items={props.set_items} pop={props.pop} set_pop={props.set_pop} set_cart={props.set_cart} Cart={props.Cart}/>
-        <Cart pop={props.pop} set_pop={props.set_pop} Cart={props.Cart}/>
+        <Cart remove_cart={props.remove_cart} pop={props.pop} set_pop={props.set_pop} Cart={props.Cart}/>
       </div>
     );
 } 
