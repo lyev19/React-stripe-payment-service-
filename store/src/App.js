@@ -5,16 +5,25 @@ import { useState} from 'react';
 import {BrowserRouter as Router,Route, Routes} from "react-router-dom";
 
 import { Store } from './pages/store';
+
  
 function App() {
 
   const [Items,setItems]= useState([]);
   const [pop,setPop] = useState(false)
+  const [Cart,SetCart] = useState([])
+
 
   const set_items = (item)=>{
      //missing check for item integrity
      setItems(Items =>[ ...Items,item])
   } 
+  
+  const set_cart = (item)=>{
+    //missing check for item integrity
+    SetCart(Cart =>[ ...Cart,item])
+    console.log(Cart)
+ } 
 
   const all_items_fetch= async()=>{
     if(localStorage.getItem("items")===null){
@@ -36,7 +45,7 @@ function App() {
   return (
      <Router>
         <Routes>
-            <Route path="/"  element={<Store Items={Items} set_items={set_items} pop={pop} set_pop={set_pop} all_items_fetch={ all_items_fetch}/> } />
+            <Route path="/"  element={<Store Items={Items} set_items={set_items} pop={pop} set_pop={set_pop} all_items_fetch={ all_items_fetch} set_cart={set_cart} Cart={Cart}/> } />
         </Routes>
      </Router>
   );

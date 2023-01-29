@@ -15,7 +15,7 @@ const Card_element = (props)=>{
        <div className="description hidden">
            Lorem ipsum
        </div>
-       <div className='add-to-cart'> add to cart</div>
+       <div className='add-to-cart' onClick={(a)=>{props.set_cart(item)}}> add to cart</div>
     </div>)
 
 }
@@ -34,7 +34,7 @@ export const Elements = (props)=>{
         }
     }, [localStorage]);
    
-   const all_cards = props.Items.map((a)=> {return(<Card_element item ={a}/>)})
+   const all_cards = props.Items.map((a)=> {return(<Card_element item ={a} set_cart={props.set_cart}/>)})
     console.log(props.Items)
     //const cards = localStorage.getItem("items")!==null? ()=>{
         

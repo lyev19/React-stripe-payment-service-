@@ -1,7 +1,7 @@
 import React from "react";
 import { useState,useEffect} from "react";
 import { Elements } from "../components/store-elements";
-
+import { Cart } from "../components/popup";
 export const Store =(props) =>{
 
     useEffect(() => {
@@ -13,12 +13,13 @@ export const Store =(props) =>{
         <header className="App-header">
             Store
             <div className='buttons-header'>
-            <button className='button-buy' onClick={()=>{}}>Shopping-cart</button>
+            <button className='button-buy' onClick={()=>{props.set_pop()}}>Shopping-cart</button>
             <button className='button-buy'>BUY$$$$$$</button>
             </div>
            
         </header>
-        <Elements Items={props.Items} set_items={props.set_items} pop={props.pop} set_pop={props.set_pop}/>
+        <Elements Items={props.Items} set_items={props.set_items} pop={props.pop} set_pop={props.set_pop} set_cart={props.set_cart} Cart={props.Cart}/>
+        <Cart pop={props.pop} set_pop={props.set_pop} Cart={props.Cart}/>
       </div>
     );
 } 
