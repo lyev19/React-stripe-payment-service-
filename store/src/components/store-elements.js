@@ -1,8 +1,14 @@
 import { stripBasename } from '@remix-run/router';
 import React from 'react';
 import { useEffect } from 'react';
+import { add_item } from './popup';
 const Card_element = (props)=>{
     const item = props.item
+    const click_manager = ()=>{
+           props.setselItem(item)
+           props.pop_buy()
+    }
+
     return(
     <div className="card">
         <h4 className="card-title">
@@ -15,7 +21,7 @@ const Card_element = (props)=>{
        <div className="description hidden">
            Lorem ipsum
        </div>
-       <div className='add-to-cart' onClick={(a)=>{props.set_cart(item)}}> add to cart</div>
+       <div className='fa-solid fa-cart-shopping add-to-cart' onClick={(a)=>{click_manager()}}> +</div>
     </div>)
 
 }
@@ -34,7 +40,7 @@ export const Elements = (props)=>{
         }
     }, [localStorage]);
    
-   const all_cards = props.Items.map((a)=> {return(<Card_element item ={a} set_cart={props.set_cart}/>)})
+   const all_cards = props.Items===[]? props.Items.map((a)=>{ return(<div> Theres no items wtf </div>)}):props.Items.map((a)=> {return(<Card_element setselItem={props.setselItem} popBuy={props.popBuy} pop_buy={props.pop_buy} item ={a} set_cart={props.set_cart}/>)})
     console.log(props.Items)
     //const cards = localStorage.getItem("items")!==null? ()=>{
         

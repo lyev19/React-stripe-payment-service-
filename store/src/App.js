@@ -1,7 +1,7 @@
 
 import './App.css';
 import React from 'react';
-import { useState} from 'react';
+import { useState,useEffect} from 'react';
 import {BrowserRouter as Router,Route, Routes} from "react-router-dom";
 
 import { Store } from './pages/store';
@@ -12,8 +12,9 @@ function App() {
   const [Items,setItems]= useState([]);
   const [pop,setPop] = useState(false)
   const [Cart,SetCart] = useState([])
-
-
+  
+  
+ 
   const set_items = (item)=>{
      //missing check for item integrity
      setItems(Items =>[ ...Items,item])
@@ -53,9 +54,20 @@ function App() {
      <Router>
         <Routes>
             <Route path="/"  element={<Store remove_cart={remove_cart} Items={Items} set_items={set_items} pop={pop} set_pop={set_pop} all_items_fetch={ all_items_fetch} set_cart={set_cart} Cart={Cart}/> } />
+            <Route path="/pay"></Route>
         </Routes>
      </Router>
   );
 }
 
 export default App;
+
+
+
+/* 
+<li class= "item"> </li>
+
+
+style 
+
+*/
